@@ -45,6 +45,9 @@ public class MainActivityFragment extends Fragment {
         updatedField = (TextView)rootView.findViewById(R.id.updated_field);
         detailsField = (TextView)rootView.findViewById(R.id.details_field);
         currentTemperatureField = (TextView)rootView.findViewById(R.id.current_temperature_field);
+		// Calling the UpdateWeather AsyncTask to get the latest weather condition
+        UpdateWeatherData updateWeatherData = new UpdateWeatherData(new CityPreference(getActivity()).getCity());
+        updateWeatherData.execute();
 
         return rootView;
     }
@@ -52,9 +55,6 @@ public class MainActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // Calling the UpdateWeather AsyncTask to get the latest weather condition
-        UpdateWeatherData updateWeatherData = new UpdateWeatherData(new CityPreference(getActivity()).getCity());
-        updateWeatherData.execute();
     }
 
 
